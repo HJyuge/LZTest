@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dazzlzy.springbootseed.dao.user.BillMapper">
+
+    <select id="selectUserBillInfo" resultType="com.dazzlzy.springbootseed.model.user.UserBill">
+        select * from t_user_bill tub
+        where tub.user_account = #{userAccount}
+        <if test="dateSelectType == 'day'">
+            and tub.bill_date = date_format(#{billFormatDate},'%Y-%m-%d')
+        </if>
+        <if test="dateSelectType == 'month'">
+            and tub.bill_date like concat(date_format(#{billFormatDate},'%Y-%m'),'%')
+        </if>
+        <if test="dateSelectType == 'year'">
+            and tub.bill_date like concat(date_format(#{billFormatDate},'%Y'),'%')
+        </if>
+    </select>
+</mapper>
