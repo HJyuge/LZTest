@@ -89,4 +89,6 @@ public class UserServiceImpl implements IUserService {
         return userMapper.selectUserByAccount(account);
     }
 
+    @Override
+    public int modifyUserInfo(User user){ return userMapper.modifyUserInfo(user); }
 }

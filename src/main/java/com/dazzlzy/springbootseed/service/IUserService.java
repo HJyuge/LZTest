@@ -63,4 +63,11 @@ public interface IUserService {
      * @return
      */
     User selectUserByAccount(String account);
+
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
+    int modifyUserInfo(User user);
 }

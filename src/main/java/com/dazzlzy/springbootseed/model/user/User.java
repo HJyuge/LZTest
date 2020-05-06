@@ -2,6 +2,7 @@ package com.dazzlzy.springbootseed.model.user;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
@@ -14,7 +15,9 @@ import javax.persistence.*;
  */
 @Data
 @Table(name = "t_user")
-public class User {
+public class User implements Serializable {
+
+
 
     /**
      * 用户账号

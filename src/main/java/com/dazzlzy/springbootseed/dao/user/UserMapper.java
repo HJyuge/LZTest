@@ -62,4 +62,11 @@ public interface UserMapper extends BaseMapper<User> {
      */
     User selectUserByAccount(@Param("account") String account);
 
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
+    int modifyUserInfo(@Param("user") User user);
+
 }

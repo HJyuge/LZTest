@@ -1,15 +1,13 @@
 package com.dazzlzy.springbootseed.controller;
 
 import com.dazzlzy.common.base.BaseResult;
+import com.dazzlzy.springbootseed.model.user.User;
 import com.dazzlzy.springbootseed.service.BillService;
 import com.dazzlzy.springbootseed.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -49,5 +47,11 @@ public class UserController {
                                               @RequestParam String billFormatDate,
                                               @RequestParam String dateSelectType){
        return billService.selectUserBill(userAccount, billFormatDate, dateSelectType);
+    }
+
+    @ApiOperation(value = "更新用户信息")
+    @PostMapping("/modifyUserInfo")
+    public  int modifyUserInfo(@RequestBody User user){
+        return  userService.modifyUserInfo(user);
     }
 }
