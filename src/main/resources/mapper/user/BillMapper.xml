@@ -15,4 +15,55 @@
             and tub.bill_date like concat(date_format(#{billFormatDate},'%Y'),'%')
         </if>
     </select>
+
+    <insert id="insertUserBill" parameterType="com.dazzlzy.springbootseed.model.user.Bill">
+        insert into t_bill(
+        bill_type,
+        bill_date,
+        statement,
+        sign,
+        money,
+        create_date,
+        modify_date,
+        user_account
+        )
+        values (
+        #{bill.billType},
+        #{bill.billDate},
+        #{bill.statement},
+        #{bill.sign},
+        #{bill.money},
+        now(),
+        now(),
+        #{bill.userAccount}
+        )
+    </insert>
+
+    <update id="updateBillInfo" parameterType="com.dazzlzy.springbootseed.model.user.Bill">
+        update t_bill
+        <set>
+            <if test="bill.billType != null and bill.billType != ''" >
+                bill_type = #{bill.billType},
+            </if>
+            <if test="bill.billDate != null and bill.billDate != ''" >
+                bill_date = #{bill.billDate},
+            </if>
+            <if test="bill.statement != null and bill.statement != ''" >
+                statement = #{bill.statement},
+            </if>
+            <if test="bill.sign != null and bill.sign != ''" >
+                sign = #{bill.sign},
+            </if>
+            <if test="bill.money > 0" >
+                money = #{bill.money},
+            </if>
+            modify_date = now()
+        </set>
+        WHERE bill_id = #{bill.billId}
+    </update>
+
+    <delete id="deleteBillById" parameterType="java.lang.String">
+        delete from t_bill
+        WHERE bill_id = #{billId}
+    </delete>
 </mapper>

@@ -2,6 +2,7 @@ package com.dazzlzy.springbootseed.service.impl;
 
 import com.dazzlzy.common.base.BaseResult;
 import com.dazzlzy.springbootseed.dao.user.BillMapper;
+import com.dazzlzy.springbootseed.model.user.Bill;
 import com.dazzlzy.springbootseed.model.user.UserBill;
 import com.dazzlzy.springbootseed.service.BillService;
 import lombok.extern.log4j.Log4j2;
@@ -31,5 +32,23 @@ public class BillServiceImpl implements BillService {
         }
     }
 
+    @Override
+    public BaseResult insertUserBill(Bill bill) {
+        Integer success = billMapper.insertUserBill(bill);
+        if (success == 1){
+            return BaseResult.builder().success(true).code(200).build();
+        }else {
+            return BaseResult.builder().success(false).code(500).build();
+        }
+    }
 
+    @Override
+    public BaseResult updateBillInfo(Bill bill) {
+        Integer success = billMapper.updateBillInfo(bill);
+        if (success == 1) {
+            return BaseResult.builder().success(true).code(200).build();
+        }else {
+            return BaseResult.builder().success(false).code(500).build();
+        }
+    }
 }

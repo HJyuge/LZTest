@@ -1,6 +1,7 @@
 package com.dazzlzy.springbootseed.controller;
 
 import com.dazzlzy.common.base.BaseResult;
+import com.dazzlzy.springbootseed.model.user.Bill;
 import com.dazzlzy.springbootseed.model.user.User;
 import com.dazzlzy.springbootseed.service.BillService;
 import com.dazzlzy.springbootseed.service.IUserService;
@@ -54,4 +55,15 @@ public class UserController {
     public  int modifyUserInfo(@RequestBody User user){
         return  userService.modifyUserInfo(user);
     }
+
+    @ApiOperation(value = "创建账单")
+    @PostMapping("/insertUserBill")
+    public  BaseResult insertUserBill(@RequestBody Bill bill){
+        return billService.insertUserBill(bill);
+    }
+
+
+    @ApiOperation(value = "更新账单")
+    @PostMapping("/updateBillInfo")
+    public  BaseResult updateBillInfo(@RequestBody Bill bill){ return billService.updateBillInfo(bill); }
 }
