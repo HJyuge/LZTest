@@ -11,4 +11,6 @@ public interface BillService {
     BaseResult insertUserBill(Bill bill);
 
     BaseResult updateBillInfo(Bill bill);
+
+    BaseResult deleteBillById(String billId);
 }

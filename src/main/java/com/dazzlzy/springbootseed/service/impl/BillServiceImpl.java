@@ -38,7 +38,8 @@ public class BillServiceImpl implements BillService {
         if (success == 1){
             return BaseResult.builder().success(true).code(200).build();
         }else {
-            return BaseResult.builder().success(false).code(500).build();
+            log.info("bill = " + bill +" exceptionReason :参数异常/sql操作字段异常");
+            return BaseResult.builder().success(false).code(500).message("参数异常").build();
         }
     }
 
@@ -48,7 +49,19 @@ public class BillServiceImpl implements BillService {
         if (success == 1) {
             return BaseResult.builder().success(true).code(200).build();
         }else {
-            return BaseResult.builder().success(false).code(500).build();
+            log.info("bill = " + bill +" exceptionReason :参数异常/sql操作字段异常");
+            return BaseResult.builder().success(false).code(500).message("参数异常").build();
+        }
+    }
+
+    @Override
+    public BaseResult deleteBillById(String billId) {
+        Integer success = billMapper.deleteBillById(billId);
+        if (success == 1) {
+            return BaseResult.builder().success(true).code(200).build();
+        }else {
+            log.info("billId = " + billId +" exceptionReason :参数异常/sql操作字段异常");
+            return BaseResult.builder().success(false).code(500).message("参数异常").build();
         }
     }
 }

@@ -20,4 +20,6 @@ public interface BillMapper {
     int insertUserBill(@Param("bill") Bill bill);
 
     int updateBillInfo(@Param("bill") Bill bill);
+
+    int deleteBillById(@Param("billId") String billId);
 }

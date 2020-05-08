@@ -62,4 +62,8 @@
         WHERE bill_id = #{bill.billId}
     </update>
 
+    <delete id="deleteBillById" parameterType="java.lang.String">
+        delete from t_bill
+        WHERE bill_id = #{billId}
+    </delete>
 </mapper>

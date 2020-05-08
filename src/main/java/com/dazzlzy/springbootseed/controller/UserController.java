@@ -66,4 +66,8 @@ public class UserController {
     @ApiOperation(value = "更新账单")
     @PostMapping("/updateBillInfo")
     public  BaseResult updateBillInfo(@RequestBody Bill bill){ return billService.updateBillInfo(bill); }
+
+    @ApiOperation(value = "删除账单")
+    @PostMapping("/deleteBillById")
+    public  BaseResult deleteBillById(@RequestParam String billId){ return billService.deleteBillById(billId); }
 }
