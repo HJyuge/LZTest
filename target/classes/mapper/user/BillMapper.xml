@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dazzlzy.springbootseed.dao.user.BillMapper">
 
-    <select id="selectUserBillInfo" resultType="com.dazzlzy.springbootseed.model.user.UserBill">
-        select * from t_user_bill tub
+    <select id="selectUserBillInfo" resultType="com.dazzlzy.springbootseed.model.user.Bill">
+        select * from t_bill tub
         where tub.user_account = #{userAccount}
         <if test="dateSelectType == 'day'">
             and tub.bill_date = date_format(#{billFormatDate},'%Y-%m-%d')
@@ -66,4 +66,9 @@
         delete from t_bill
         WHERE bill_id = #{billId}
     </delete>
+
+    <select id="selectBillsByAccount" resultType="com.dazzlzy.springbootseed.model.user.Bill">
+        select * from t_bill tbill
+        where tbill.user_account = #{account}
+    </select>
 </mapper>

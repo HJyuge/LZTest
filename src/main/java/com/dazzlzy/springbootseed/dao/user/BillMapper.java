@@ -13,7 +13,7 @@ public interface BillMapper {
      * @param userAccount
      * @return
      */
-    List<UserBill> selectUserBillInfo(@Param("userAccount") String userAccount,
+    List<Bill> selectUserBillInfo(@Param("userAccount") String userAccount,
                                       @Param("billFormatDate") String billFormatDate,
                                       @Param("dateSelectType") String dateSelectType);
 
@@ -22,4 +22,6 @@ public interface BillMapper {
     int updateBillInfo(@Param("bill") Bill bill);
 
     int deleteBillById(@Param("billId") String billId);
+
+    List<Bill> selectBillsByAccount(@Param("account") String account);
 }

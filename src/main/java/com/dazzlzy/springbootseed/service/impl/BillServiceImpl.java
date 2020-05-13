@@ -22,7 +22,7 @@ public class BillServiceImpl implements BillService {
     @Override
     public BaseResult selectUserBill(String userAccount, String billFormatDate, String dateSelectType){
         List<String> dates = Arrays.asList("day","month","year");
-        List<UserBill> userBills;
+        List<Bill> userBills;
         if (dates.contains(dateSelectType)){
             userBills = billMapper.selectUserBillInfo(userAccount,billFormatDate,dateSelectType);
             return BaseResult.builder().success(true).code(200).data(userBills).build();
@@ -61,6 +61,18 @@ public class BillServiceImpl implements BillService {
             return BaseResult.builder().success(true).code(200).build();
         }else {
             log.info("billId = " + billId +" exceptionReason :参数异常/sql操作字段异常");
+            return BaseResult.builder().success(false).code(500).message("参数异常").build();
+        }
+    }
+
+    @Override
+    public BaseResult selectBillsByAccount(String account) {
+
+        if (account != null){
+            List<Bill> bills = billMapper.selectBillsByAccount(account);
+            return  BaseResult.builder().success(true).code(200).data(bills).message("请求成功").build();
+        }else {
+            log.info("account is null. exceptionReason :参数异常/sql操作字段异常");
             return BaseResult.builder().success(false).code(500).message("参数异常").build();
         }
     }

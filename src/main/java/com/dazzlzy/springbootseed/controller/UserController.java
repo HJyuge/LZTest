@@ -70,4 +70,8 @@ public class UserController {
     @ApiOperation(value = "删除账单")
     @PostMapping("/deleteBillById")
     public  BaseResult deleteBillById(@RequestParam String billId){ return billService.deleteBillById(billId); }
+
+    @ApiOperation(value = "账号账单")
+    @PostMapping("/selectBillsByAccount")
+    public  BaseResult selectBillsByAccount(@RequestParam String account){ return billService.selectBillsByAccount(account); }
 }

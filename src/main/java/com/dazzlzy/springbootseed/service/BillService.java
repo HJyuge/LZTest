@@ -13,4 +13,6 @@ public interface BillService {
     BaseResult updateBillInfo(Bill bill);
 
     BaseResult deleteBillById(String billId);
+
+    BaseResult selectBillsByAccount(String account);
 }
